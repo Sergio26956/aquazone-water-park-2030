@@ -1,1 +1,16 @@
-// placeholder file: components/AdvancedAnimations.tsx
+"use client"
+
+import { motion } from "framer-motion"
+
+export default function AdvancedAnimations({ children }: { children: React.ReactNode }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, rotateY: 15 }}
+      animate={{ opacity: 1, rotateY: 0 }}
+      transition={{ duration: 1.2 }}
+      style={{ perspective: 1000 }}
+    >
+      {children}
+    </motion.div>
+  )
+}
