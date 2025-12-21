@@ -8,7 +8,9 @@ export default function GaleriaUrbano() {
         images={[
           "/images/urbanos/1.jpg",
           "/images/urbanos/2.jpg",
-          "/images/urbanos/3.jpg"
+          "/images/urbanos/3.jpg",
+          "/images/urbanos/4.jpg",
+          "/images/urbanos/5.jpg"
         ]}
       />
     </main>
