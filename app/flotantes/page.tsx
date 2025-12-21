@@ -1,14 +1,54 @@
-import SectionTransition from "@/components/SectionTransition"
+"use client"
+
+import { motion } from "framer-motion"
+import FuturisticGallery from "@/components/FuturisticGallery"
 
 export default function FlotantesPage() {
+  const images = [
+    "/images/flotantes/1.jpg",
+    "/images/flotantes/2.jpg",
+    "/images/flotantes/3.jpg"
+  ]
+
   return (
-    <SectionTransition>
-      <main style={{ padding: "140px 10vw" }}>
-        <h1>Parques Acuáticos Flotantes</h1>
-        <p style={{ marginTop: 20 }}>
-          Piscinas modulares · Playas flotantes · Sistemas escalables
-        </p>
-      </main>
-    </SectionTransition>
+    <main style={{ padding: "140px 8vw" }}>
+      <motion.h1
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+        style={{ textAlign: "center", marginBottom: 40 }}
+      >
+        Parques Flotantes Modulares
+      </motion.h1>
+
+      <motion.p
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.5, duration: 1 }}
+        style={{ textAlign: "center", marginBottom: 60 }}
+      >
+        Piscinas y playas modulares premium con efectos futuristas.
+      </motion.p>
+
+      <FuturisticGallery images={images} />
+
+      <div style={{ marginTop: 60, display: "flex", justifyContent: "center" }}>
+        <motion.a
+          href="/contacto"
+          whileHover={{ scale: 1.1 }}
+          style={{
+            padding: "14px 36px",
+            background: "rgba(0,255,255,0.2)",
+            borderRadius: 40,
+            color: "#fff",
+            fontWeight: 700,
+            textDecoration: "none",
+            boxShadow: "0 0 25px rgba(0,255,255,0.6)"
+          }}
+        >
+          Contactar / Presupuesto
+        </motion.a>
+      </div>
+    </main>
   )
 }
