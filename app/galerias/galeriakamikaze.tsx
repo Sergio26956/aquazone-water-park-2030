@@ -7,7 +7,8 @@ export default function GaleriaKamikaze() {
       <FuturisticGallery
         images={[
           "/images/kamikaze/1.jpg",
-          "/images/kamikaze/2.jpg"
+          "/images/kamikaze/2.jpg",
+          "/images/kamikaze/3.jpg"
         ]}
       />
     </main>
