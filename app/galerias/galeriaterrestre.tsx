@@ -6,8 +6,9 @@ export default function GaleriaTerrestre() {
       <h1>Galería Terrestre</h1>
       <FuturisticGallery
         images={[
-          "/images/urbanos/4.jpg",
-          "/images/urbanos/5.jpg"
+          "/images/urbanos/6.jpg",
+          "/images/urbanos/7.jpg",
+          "/images/urbanos/8.jpg"
         ]}
       />
     </main>
