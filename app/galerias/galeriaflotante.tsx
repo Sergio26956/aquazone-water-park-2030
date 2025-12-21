@@ -7,7 +7,8 @@ export default function GaleriaFlotante() {
       <FuturisticGallery
         images={[
           "/images/flotantes/1.jpg",
-          "/images/flotantes/2.jpg"
+          "/images/flotantes/2.jpg",
+          "/images/flotantes/3.jpg"
         ]}
       />
     </main>
