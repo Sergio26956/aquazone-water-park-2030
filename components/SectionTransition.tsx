@@ -8,12 +8,14 @@ export default function SectionTransition({
   children: React.ReactNode
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.9, ease: "easeOut" }}
+    <motion.section
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 1 }}
+      style={{ marginBottom: 80 }}
     >
       {children}
-    </motion.div>
+    </motion.section>
   )
 }
