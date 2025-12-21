@@ -1,20 +1,22 @@
 "use client"
 
-import { format, addDays } from "date-fns"
+import { useState } from "react"
+import { format } from "date-fns"
 
 export default function Calendar() {
-  const days = Array.from({ length: 14 }).map((_, i) =>
-    format(addDays(new Date(), i), "dd/MM/yyyy")
-  )
+  const [dates, setDates] = useState<string[]>([])
+
+  function addDate() {
+    setDates([...dates, format(new Date(), "yyyy-MM-dd HH:mm")])
+  }
 
   return (
-    <div style={{ marginTop: 30 }}>
-      <h3>Calendario (próximas fechas)</h3>
+    <>
+      <h2>Reservas</h2>
+      <button onClick={addDate}>Añadir reserva</button>
       <ul>
-        {days.map((d) => (
-          <li key={d}>{d}</li>
-        ))}
+        {dates.map((d, i) => <li key={i}>{d}</li>)}
       </ul>
-    </div>
+    </>
   )
 }
