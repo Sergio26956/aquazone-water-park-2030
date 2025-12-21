@@ -5,11 +5,11 @@ import AdminLogin from "@/components/AdminLogin"
 import AdminPanel from "@/components/AdminPanel"
 
 export default function AdminPage() {
-  const [ok, setOk] = useState(false)
+  const [auth, setAuth] = useState(false)
 
   return (
-    <main style={{ padding: "140px 8vw" }}>
-      {!ok ? <AdminLogin onSuccess={() => setOk(true)} /> : <AdminPanel />}
+    <main style={{ padding: "120px 6vw" }}>
+      {!auth ? <AdminLogin onAuth={() => setAuth(true)} /> : <AdminPanel />}
     </main>
   )
 }
