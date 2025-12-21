@@ -2,9 +2,9 @@
 
 export default function ContactList() {
   return (
-    <div style={{ marginTop: 30 }}>
-      <h3>Contactos</h3>
-      <p>Preparado para base de datos y API.</p>
-    </div>
+    <>
+      <h2>Contactos recibidos</h2>
+      <p>Los contactos llegan vía email y quedan preparados para base de datos futura.</p>
+    </>
   )
 }
