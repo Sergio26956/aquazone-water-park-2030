@@ -2,9 +2,9 @@
 
 export default function CampaignManager() {
   return (
-    <div style={{ marginTop: 30 }}>
-      <h3>Campañas & Marketing</h3>
-      <p>IA + automatización (bloque posterior).</p>
-    </div>
+    <>
+      <h2>Campañas & Marketing</h2>
+      <p>Preparado para IA: generación automática de campañas, redes y anuncios.</p>
+    </>
   )
 }
