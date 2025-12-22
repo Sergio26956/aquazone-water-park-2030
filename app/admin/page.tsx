@@ -1,15 +1,21 @@
-"use client"
+'use client'
 
-import { useState } from "react"
-import AdminLogin from "@/components/AdminLogin"
-import AdminPanel from "@/components/AdminPanel"
+import React from 'react'
+import AdminLogin from '../../components/AdminLogin'
+import AdminPanel from '../../components/AdminPanel'
 
-export default function AdminPage() {
-  const [auth, setAuth] = useState(false)
+const AdminPage: React.FC = () => {
+  const [loggedIn, setLoggedIn] = React.useState(false)
 
   return (
-    <main style={{ padding: "120px 6vw" }}>
-      {!auth ? <AdminLogin onAuth={() => setAuth(true)} /> : <AdminPanel />}
-    </main>
+    <div className="min-h-screen bg-gray-100">
+      {!loggedIn ? (
+        <AdminLogin onLogin={() => setLoggedIn(true)} />
+      ) : (
+        <AdminPanel />
+      )}
+    </div>
   )
 }
+
+export default AdminPage
