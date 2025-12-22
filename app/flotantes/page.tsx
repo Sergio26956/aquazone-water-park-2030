@@ -1,19 +1,21 @@
-"use client"
-import SectionTransition from "@/components/SectionTransition"
-import FuturisticGallery from "@/components/FuturisticGallery"
+'use client'
 
-export default function Flotantes(){
+import React from 'react'
+import SectionTransition from '../../components/SectionTransition'
+import FuturisticGallery from '../../components/FuturisticGallery'
+
+const FlotantesPage: React.FC = () => {
   return (
-    <SectionTransition>
-      <section className="section">
-        <h1>Parques Acuáticos Flotantes</h1>
-        <p>Piscinas y playas modulares de alto impacto.</p>
-        <FuturisticGallery images={[
-          "/images/flotantes/1.jpg",
-          "/images/flotantes/2.jpg",
-          "/images/flotantes/3.jpg"
-        ]}/>
-      </section>
-    </SectionTransition>
+    <div className="min-h-screen bg-blue-50 text-gray-900 p-10">
+      <SectionTransition title="Parques Acuáticos Flotantes" />
+
+      <p className="text-lg max-w-4xl mx-auto mb-8 text-center">
+        Descubre nuestras piscinas y playas modulares flotantes con la última tecnología 2030.
+      </p>
+
+      <FuturisticGallery category="flotantes" />
+    </div>
   )
 }
+
+export default FlotantesPage
