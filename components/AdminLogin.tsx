@@ -1,34 +1,29 @@
-"use client"
+import { useState } from "react";
+import AdminPanel from "@/components/AdminPanel";
 
-import { useState } from "react"
+export default function AdminLogin() {
+  const [password, setPassword] = useState("");
+  const [isLogged, setIsLogged] = useState(false);
+  const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
 
-export default function AdminLogin({ onAuth }: { onAuth: () => void }) {
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState(false)
+  const handleLogin = () => {
+    if (password === ADMIN_PASSWORD) setIsLogged(true);
+    else alert("Contraseña incorrecta");
+  };
 
-  function submit(e: React.FormEvent) {
-    e.preventDefault()
-    if (password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
-      onAuth()
-    } else {
-      setError(true)
-    }
-  }
-
+  if (isLogged) return <AdminPanel />;
   return (
-    <form onSubmit={submit} style={{ maxWidth: 400, margin: "auto" }}>
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
       <input
         type="password"
-        placeholder="Contraseña"
+        placeholder="Introduce contraseña"
         value={password}
-        onChange={e => setPassword(e.target.value)}
-        required
-        style={{ padding: 14, width: "100%", borderRadius: 12 }}
+        onChange={(e) => setPassword(e.target.value)}
+        style={{ padding: "10px", fontSize: "1rem" }}
       />
-      <button style={{ marginTop: 20, padding: 14, width: "100%" }}>
-        Acceder
+      <button onClick={handleLogin} style={{ marginLeft: "10px", padding: "10px" }}>
+        Entrar
       </button>
-      {error && <p style={{ color: "red" }}>Acceso denegado</p>}
-    </form>
-  )
+    </div>
+  );
 }
