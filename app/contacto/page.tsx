@@ -1,23 +1,20 @@
-"use client"
+'use client'
 
-import ContactForm from "@/components/ContactForm"
-import BudgetForm from "@/components/BudgetForm"
-import { SectionTransition } from "@/components/SectionTransition"
+import React from 'react'
+import ContactForm from '../../components/ContactForm'
+import BudgetForm from '../../components/BudgetForm'
+import SectionTransition from '../../components/SectionTransition'
 
-export default function ContactPage() {
+const ContactoPage: React.FC = () => {
   return (
-    <main style={{ padding: "140px 8vw" }}>
-      <SectionTransition>
-        <h1 style={{ textAlign: "center", marginBottom: 40 }}>Contacto</h1>
+    <div className="min-h-screen bg-white">
+      <SectionTransition title="Contacto y Presupuestos" />
+      <div className="max-w-5xl mx-auto p-6 grid gap-10 md:grid-cols-2">
         <ContactForm />
-      </SectionTransition>
-
-      <SectionTransition>
-        <h2 style={{ textAlign: "center", marginTop: 80, marginBottom: 40 }}>
-          Solicitar Presupuesto
-        </h2>
         <BudgetForm />
-      </SectionTransition>
-    </main>
+      </div>
+    </div>
   )
 }
+
+export default ContactoPage
