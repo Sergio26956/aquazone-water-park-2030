@@ -1,51 +1,47 @@
-'use client'
+import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
+import SectionTransition from "@/components/SectionTransition";
+import FuturisticGallery from "@/components/FuturisticGallery";
+import { motion } from "framer-motion";
 
-import React from 'react'
-import WhatsAppFloatingButton from '../components/WhatsAppFloatingButton'
-import FuturisticGallery from '../components/FuturisticGallery'
-import SectionTransition from '../components/SectionTransition'
-import { motion } from 'framer-motion'
+export default function HomePage() {
+  const mainImages = [
+    "/images/flotantes/piscina1.jpg",
+    "/images/urbanos/actividad1.jpg",
+    "/images/kamikaze/jump1.jpg"
+  ];
 
-const HomePage: React.FC = () => {
   return (
-    <div className="relative min-h-screen bg-black text-white overflow-hidden">
-      <video
-        className="absolute w-full h-full object-cover"
-        autoPlay
-        loop
-        muted
-        playsInline
-      >
+    <div>
+      {/* Video de fondo */}
+      <video autoPlay loop muted style={{ width: "100%", height: "100vh", objectFit: "cover" }}>
         <source src="/videos/background_main.mp4" type="video/mp4" />
       </video>
 
-      <div className="relative z-10 p-10 flex flex-col items-center justify-center min-h-screen">
-        <motion.h1
-          initial={{ y: -50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="text-6xl md:text-8xl font-extrabold mb-6 text-center"
-        >
-          AQUAZONE Water Park
-        </motion.h1>
+      {/* Texto animado */}
+      <motion.h1
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.5 }}
+        style={{
+          position: "absolute",
+          top: "40%",
+          width: "100%",
+          textAlign: "center",
+          color: "#00F0FF",
+          fontSize: "4rem",
+          textShadow: "0 0 20px #00F0FF"
+        }}
+      >
+        AQUAZONE Water Park 2030
+      </motion.h1>
 
-        <motion.p
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="text-xl md:text-2xl text-center mb-10 max-w-3xl"
-        >
-          Vive la experiencia acuática más futurista y premium del mundo
-        </motion.p>
+      {/* Galería principal */}
+      <SectionTransition>
+        <FuturisticGallery images={mainImages} />
+      </SectionTransition>
 
-        <SectionTransition title="Explora nuestros parques" />
-
-        <FuturisticGallery />
-      </div>
-
+      {/* Botón WhatsApp flotante */}
       <WhatsAppFloatingButton />
     </div>
-  )
+  );
 }
-
-export default HomePage
