@@ -1,19 +1,24 @@
-"use client"
-import SectionTransition from "@/components/SectionTransition"
-import FuturisticGallery from "@/components/FuturisticGallery"
+import SectionTransition from "@/components/SectionTransition";
+import FuturisticGallery from "@/components/FuturisticGallery";
 
-export default function Urbanos(){
+export default function UrbanosPage() {
+  const images = [
+    "/images/urbanos/actividad1.jpg",
+    "/images/urbanos/actividad2.jpg",
+    "/images/urbanos/actividad3.jpg"
+  ];
+
   return (
-    <SectionTransition>
-      <section className="section">
-        <h1>Parques Acuáticos Terrestres</h1>
-        <p>Parque urbano móvil (5 actividades) + Kamikaze Jump.</p>
-        <FuturisticGallery images={[
-          "/images/urbanos/1.jpg",
-          "/images/urbanos/2.jpg",
-          "/images/urbanos/3.jpg"
-        ]}/>
-      </section>
-    </SectionTransition>
-  )
+    <div style={{ padding: "50px" }}>
+      <h2 style={{ textAlign: "center", color: "#FF4500" }}>Parques Urbanos Móviles</h2>
+      <SectionTransition>
+        <p style={{ textAlign: "center", fontSize: "1.2rem" }}>
+          Cinco actividades interactivas y dinámicas para parques acuáticos urbanos, adaptables a cualquier espacio.
+        </p>
+      </SectionTransition>
+      <SectionTransition>
+        <FuturisticGallery images={images} />
+      </SectionTransition>
+    </div>
+  );
 }
