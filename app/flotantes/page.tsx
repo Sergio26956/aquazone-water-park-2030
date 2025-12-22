@@ -1,21 +1,24 @@
-'use client'
+import SectionTransition from "@/components/SectionTransition";
+import FuturisticGallery from "@/components/FuturisticGallery";
 
-import React from 'react'
-import SectionTransition from '../../components/SectionTransition'
-import FuturisticGallery from '../../components/FuturisticGallery'
+export default function FlotantesPage() {
+  const images = [
+    "/images/flotantes/piscina1.jpg",
+    "/images/flotantes/playa1.jpg",
+    "/images/flotantes/piscina2.jpg"
+  ];
 
-const FlotantesPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-blue-50 text-gray-900 p-10">
-      <SectionTransition title="Parques Acuáticos Flotantes" />
-
-      <p className="text-lg max-w-4xl mx-auto mb-8 text-center">
-        Descubre nuestras piscinas y playas modulares flotantes con la última tecnología 2030.
-      </p>
-
-      <FuturisticGallery category="flotantes" />
+    <div style={{ padding: "50px" }}>
+      <h2 style={{ textAlign: "center", color: "#00BFFF" }}>Parques Flotantes Modulares</h2>
+      <SectionTransition>
+        <p style={{ textAlign: "center", fontSize: "1.2rem" }}>
+          Piscinas y playas modulares flotantes con diseño futurista 2030, totalmente seguros y personalizables.
+        </p>
+      </SectionTransition>
+      <SectionTransition>
+        <FuturisticGallery images={images} />
+      </SectionTransition>
     </div>
-  )
+  );
 }
-
-export default FlotantesPage
