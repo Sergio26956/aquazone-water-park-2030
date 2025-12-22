@@ -1,120 +1,51 @@
-"use client"
+'use client'
 
-import { motion } from "framer-motion"
-import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton"
-import { useState, useEffect } from "react"
-import FuturisticGallery from "@/components/FuturisticGallery"
-import SectionTransition from "@/components/SectionTransition"
+import React from 'react'
+import WhatsAppFloatingButton from '../components/WhatsAppFloatingButton'
+import FuturisticGallery from '../components/FuturisticGallery'
+import SectionTransition from '../components/SectionTransition'
+import { motion } from 'framer-motion'
 
-export default function HomePage() {
-  const [videoLoaded, setVideoLoaded] = useState(false)
-  const [images, setImages] = useState<string[]>([])
-
-  useEffect(() => {
-    // Galería principal con imágenes futuristas
-    setImages([
-      "/images/urbanos/1.jpg",
-      "/images/urbanos/2.jpg",
-      "/images/flotantes/1.jpg",
-      "/images/kamikaze/1.jpg"
-    ])
-  }, [])
-
+const HomePage: React.FC = () => {
   return (
-    <main style={{ position: "relative", overflow: "hidden" }}>
-      {/* VIDEO DE FONDO */}
+    <div className="relative min-h-screen bg-black text-white overflow-hidden">
       <video
+        className="absolute w-full h-full object-cover"
         autoPlay
         loop
         muted
         playsInline
-        poster="/videos/background_main.mp4"
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          zIndex: -1
-        }}
-        onLoadedData={() => setVideoLoaded(true)}
       >
         <source src="/videos/background_main.mp4" type="video/mp4" />
       </video>
 
-      {/* SECCIÓN PRINCIPAL */}
-      <SectionTransition>
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          style={{
-            paddingTop: "120px",
-            textAlign: "center",
-            color: "#fff",
-            textShadow: "0 0 15px rgba(0,0,0,0.6)"
-          }}
+      <div className="relative z-10 p-10 flex flex-col items-center justify-center min-h-screen">
+        <motion.h1
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="text-6xl md:text-8xl font-extrabold mb-6 text-center"
         >
-          <h1 style={{ fontSize: "4rem", fontWeight: 900 }}>
-            AQUAZONE Water Park
-          </h1>
-          <p style={{ marginTop: 20, fontSize: "1.5rem" }}>
-            La experiencia acuática más futurista 2030
-          </p>
+          AQUAZONE Water Park
+        </motion.h1>
 
-          {/* BOTONES FLOTANTES */}
-          <div
-            style={{
-              marginTop: 40,
-              display: "flex",
-              justifyContent: "center",
-              gap: 30
-            }}
-          >
-            <motion.a
-              href="/urbanos"
-              whileHover={{ scale: 1.1 }}
-              style={{
-                padding: "12px 28px",
-                background: "rgba(5,7,12,0.8)",
-                borderRadius: 40,
-                color: "#fff",
-                fontWeight: 700,
-                textDecoration: "none",
-                boxShadow: "0 0 20px rgba(0,255,255,0.5)"
-              }}
-            >
-              Parques Terrestres
-            </motion.a>
-            <motion.a
-              href="/flotantes"
-              whileHover={{ scale: 1.1 }}
-              style={{
-                padding: "12px 28px",
-                background: "rgba(5,7,12,0.8)",
-                borderRadius: 40,
-                color: "#fff",
-                fontWeight: 700,
-                textDecoration: "none",
-                boxShadow: "0 0 20px rgba(0,255,255,0.5)"
-              }}
-            >
-              Parques Flotantes
-            </motion.a>
-          </div>
-        </motion.div>
-      </SectionTransition>
+        <motion.p
+          initial={{ y: 50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="text-xl md:text-2xl text-center mb-10 max-w-3xl"
+        >
+          Vive la experiencia acuática más futurista y premium del mundo
+        </motion.p>
 
-      {/* GALERÍA PRINCIPAL */}
-      <SectionTransition>
-        <div style={{ marginTop: 80, padding: "0 8vw" }}>
-          <FuturisticGallery images={images} />
-        </div>
-      </SectionTransition>
+        <SectionTransition title="Explora nuestros parques" />
 
-      {/* BOTÓN WHATSAPP */}
+        <FuturisticGallery />
+      </div>
+
       <WhatsAppFloatingButton />
-    </main>
+    </div>
   )
 }
+
+export default HomePage
