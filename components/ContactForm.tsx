@@ -1,87 +1,35 @@
-"use client"
-
-import { useState } from "react"
-import { motion } from "framer-motion"
+import { useState } from "react";
 
 export default function ContactForm() {
-  const [name, setName] = useState("")
-  const [email, setEmail] = useState("")
-  const [message, setMessage] = useState("")
-  const [status, setStatus] = useState<"idle"|"sending"|"sent"|"error">("idle")
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState("");
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault()
-    setStatus("sending")
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     try {
-      await fetch("/api/contact", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message })
-      })
-      setStatus("sent")
-      setName(""); setEmail(""); setMessage("")
+        body: JSON.stringify(formData),
+      });
+      if (res.ok) setStatus("Mensaje enviado correctamente.");
+      else setStatus("Error al enviar el mensaje.");
     } catch {
-      setStatus("error")
+      setStatus("Error al enviar el mensaje.");
     }
-  }
+  };
 
   return (
-    <motion.form
-      onSubmit={handleSubmit}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1 }}
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: 20,
-        maxWidth: 500,
-        margin: "0 auto",
-        background: "rgba(5,7,12,0.85)",
-        padding: 30,
-        borderRadius: 20,
-        color: "#fff"
-      }}
-    >
-      <input
-        type="text"
-        placeholder="Nombre"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        required
-        style={{ padding: 12, borderRadius: 12, border: "none" }}
-      />
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-        style={{ padding: 12, borderRadius: 12, border: "none" }}
-      />
-      <textarea
-        placeholder="Mensaje"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-        required
-        style={{ padding: 12, borderRadius: 12, border: "none", minHeight: 120 }}
-      />
-      <button
-        type="submit"
-        style={{
-          padding: 14,
-          borderRadius: 40,
-          border: "none",
-          background: "rgba(0,255,255,0.3)",
-          fontWeight: 700,
-          cursor: "pointer",
-          boxShadow: "0 0 20px rgba(0,255,255,0.5)"
-        }}
-      >
-        {status === "sending" ? "Enviando..." : "Enviar"}
-      </button>
-      {status === "sent" && <p style={{ color: "#0f0" }}>Enviado correctamente</p>}
-      {status === "error" && <p style={{ color: "#f00" }}>Error al enviar</p>}
-    </motion.form>
-  )
+    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
+      <input type="text" name="name" placeholder="Nombre" value={formData.name} onChange={handleChange} required />
+      <input type="email" name="email" placeholder="Correo" value={formData.email} onChange={handleChange} required />
+      <textarea name="message" placeholder="Mensaje" value={formData.message} onChange={handleChange} required />
+      <button type="submit">Enviar</button>
+      {status && <p>{status}</p>}
+    </form>
+  );
 }
