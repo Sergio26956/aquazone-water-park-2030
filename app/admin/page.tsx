@@ -1,21 +1,10 @@
-'use client'
+import AdminLogin from "@/components/AdminLogin";
 
-import React from 'react'
-import AdminLogin from '../../components/AdminLogin'
-import AdminPanel from '../../components/AdminPanel'
-
-const AdminPage: React.FC = () => {
-  const [loggedIn, setLoggedIn] = React.useState(false)
-
+export default function AdminPage() {
   return (
-    <div className="min-h-screen bg-gray-100">
-      {!loggedIn ? (
-        <AdminLogin onLogin={() => setLoggedIn(true)} />
-      ) : (
-        <AdminPanel />
-      )}
+    <div style={{ padding: "50px" }}>
+      <h2 style={{ textAlign: "center", color: "#FF1493" }}>Zona Privada Administrativa</h2>
+      <AdminLogin />
     </div>
-  )
+  );
 }
-
-export default AdminPage
