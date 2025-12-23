@@ -1,22 +1,18 @@
-"use client"
-
-import { useState } from "react"
-import { format } from "date-fns"
+import { useState } from "react";
+import { format } from "date-fns";
 
 export default function Calendar() {
-  const [dates, setDates] = useState<string[]>([])
-
-  function addDate() {
-    setDates([...dates, format(new Date(), "yyyy-MM-dd HH:mm")])
-  }
+  const [date, setDate] = useState(format(new Date(), "yyyy-MM-dd"));
 
   return (
-    <>
-      <h2>Reservas</h2>
-      <button onClick={addDate}>Añadir reserva</button>
-      <ul>
-        {dates.map((d, i) => <li key={i}>{d}</li>)}
-      </ul>
-    </>
-  )
+    <div style={{ border: "2px solid #00BFFF", padding: "20px", borderRadius: "15px" }}>
+      <h3 style={{ color: "#00BFFF" }}>Calendario de Reservas</h3>
+      <input
+        type="date"
+        value={date}
+        onChange={(e) => setDate(e.target.value)}
+        style={{ padding: "10px", fontSize: "1rem", marginTop: "10px" }}
+      />
+    </div>
+  );
 }
