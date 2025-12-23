@@ -1,10 +1,11 @@
+"use client";
+
+import { useState } from "react";
 import AdminLogin from "@/components/AdminLogin";
+import AdminPanel from "@/components/AdminPanel";
 
 export default function AdminPage() {
-  return (
-    <div style={{ padding: "50px" }}>
-      <h2 style={{ textAlign: "center", color: "#FF1493" }}>Zona Privada Administrativa</h2>
-      <AdminLogin />
-    </div>
-  );
+  const [logged, setLogged] = useState(false);
+
+  return logged ? <AdminPanel /> : <AdminLogin onLogin={() => setLogged(true)} />;
 }
