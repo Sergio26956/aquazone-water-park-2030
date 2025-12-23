@@ -1,16 +1,14 @@
 import { motion } from "framer-motion";
-import { ReactNode } from "react";
 
-export default function SectionTransition({ children }: { children: ReactNode }) {
+export default function SectionTransition({ children }: { children: React.ReactNode }) {
   return (
-    <motion.section
+    <motion.div
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
-      style={{ margin: "50px 0" }}
     >
       {children}
-    </motion.section>
+    </motion.div>
   );
 }
