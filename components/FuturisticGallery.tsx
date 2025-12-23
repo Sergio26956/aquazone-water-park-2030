@@ -1,20 +1,16 @@
 import { motion } from "framer-motion";
 
-interface FuturisticGalleryProps {
-  images: string[];
-}
-
-export default function FuturisticGallery({ images }: FuturisticGalleryProps) {
+export default function FuturisticGallery({ images }: { images: string[] }) {
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: "15px", justifyContent: "center" }}>
+    <div style={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: "20px", marginTop: "30px" }}>
       {images.map((img, idx) => (
         <motion.img
           key={idx}
           src={img}
-          alt={`Gallery ${idx}`}
+          alt={`imagen-${idx}`}
+          style={{ width: "300px", height: "200px", objectFit: "cover", borderRadius: "20px", boxShadow: "0 0 20px #00F0FF" }}
           whileHover={{ scale: 1.1, rotate: 2 }}
           transition={{ duration: 0.5 }}
-          style={{ width: "250px", height: "180px", objectFit: "cover", borderRadius: "15px", cursor: "pointer" }}
         />
       ))}
     </div>
