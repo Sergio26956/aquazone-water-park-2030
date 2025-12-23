@@ -1,29 +1,20 @@
+"use client";
+
 import { useState } from "react";
-import AdminPanel from "@/components/AdminPanel";
 
-export default function AdminLogin() {
-  const [password, setPassword] = useState("");
-  const [isLogged, setIsLogged] = useState(false);
-  const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD;
+export default function AdminLogin({ onLogin }: { onLogin: () => void }) {
+  const [pass, setPass] = useState("");
 
-  const handleLogin = () => {
-    if (password === ADMIN_PASSWORD) setIsLogged(true);
-    else alert("Contraseña incorrecta");
-  };
-
-  if (isLogged) return <AdminPanel />;
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
+    <div style={{ textAlign: "center" }}>
+      <h2>Acceso Administrador</h2>
       <input
         type="password"
-        placeholder="Introduce contraseña"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        style={{ padding: "10px", fontSize: "1rem" }}
+        placeholder="Contraseña"
+        value={pass}
+        onChange={(e) => setPass(e.target.value)}
       />
-      <button onClick={handleLogin} style={{ marginLeft: "10px", padding: "10px" }}>
-        Entrar
-      </button>
+      <button onClick={onLogin}>Entrar</button>
     </div>
   );
 }
