@@ -1,23 +1,13 @@
-import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
-import FuturisticGallery from "@/components/FuturisticGallery";
-import SectionTransition from "@/components/SectionTransition";
+"use client";
 
-export default function Home() {
+import WhatsAppFloatingButton from "../components/WhatsAppFloatingButton";
+import SectionTransition from "../components/SectionTransition";
+
+export default function HomePage() {
   return (
-    <>
-      <SectionTransition>
-        <h1>AQUAZONE Water Park</h1>
-        <p>Parques acuáticos premium 2030</p>
-      </SectionTransition>
-
-      <FuturisticGallery
-        images={[
-          "/images/urbanos/1.jpg",
-          "/images/flotantes/1.jpg"
-        ]}
-      />
-
+    <SectionTransition>
+      <h1>AQUAZONE Water Park</h1>
       <WhatsAppFloatingButton />
-    </>
+    </SectionTransition>
   );
 }
