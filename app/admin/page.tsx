@@ -12,11 +12,7 @@ export default function AdminPage() {
       {isAuthenticated ? (
         <AdminPanel />
       ) : (
-        <AdminLogin
-          onLogin={() => {
-            setIsAuthenticated(true); // Cambia el estado cuando se inicia sesión
-          }}
-        />
+        <AdminLogin onLogin={() => setIsAuthenticated(true)} />
       )}
     </main>
   );
