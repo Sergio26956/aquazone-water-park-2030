@@ -1,14 +1,23 @@
 "use client";
 
-import AdminLogin from "../../components/AdminLogin";
-import AdminPanel from "../../components/AdminPanel";
+import { useState } from "react";
+import AdminLogin from "@/components/AdminLogin";
+import AdminPanel from "@/components/AdminPanel";
 
 export default function AdminPage() {
-  const isAuthenticated = true;
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   return (
     <main>
-      {isAuthenticated ? <AdminPanel /> : <AdminLogin />}
+      {isAuthenticated ? (
+        <AdminPanel />
+      ) : (
+        <AdminLogin
+          onLogin={() => {
+            setIsAuthenticated(true); // Cambia el estado cuando se inicia sesión
+          }}
+        />
+      )}
     </main>
   );
 }
