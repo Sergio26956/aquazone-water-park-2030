@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import AdminLogin from "@/components/AdminLogin";
 import AdminPanel from "@/components/AdminPanel";
 
@@ -10,7 +10,7 @@ export default function AdminPage() {
   return (
     <main>
       {isAuthenticated ? (
-        <AdminPanel />
+        <AdminPanel onLogout={() => setIsAuthenticated(false)} />
       ) : (
         <AdminLogin onLogin={() => setIsAuthenticated(true)} />
       )}
