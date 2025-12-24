@@ -1,40 +1,27 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
+import { useState } from "react";
 
 export default function CookieConsent() {
-  const [show, setShow] = useState(false)
+  const [visible, setVisible] = useState(true);
 
-  useEffect(() => {
-    if (!localStorage.getItem("cookies_ok")) setShow(true)
-  }, [])
-
-  if (!show) return null
+  if (!visible) return null;
 
   return (
-    <div
-      style={{
-        position: "fixed",
-        bottom: 20,
-        left: "50%",
-        transform: "translateX(-50%)",
-        background: "rgba(5,7,12,0.9)",
-        padding: "16px 24px",
-        borderRadius: 16,
-        zIndex: 9999
-      }}
-    >
-      <p style={{ marginBottom: 10 }}>
-        Usamos cookies para mejorar la experiencia.
-      </p>
+    <div style={{
+      position: "fixed",
+      bottom: 0,
+      width: "100%",
+      background: "#020617",
+      padding: 20
+    }}>
+      <span>Este sitio usa cookies.</span>
       <button
-        onClick={() => {
-          localStorage.setItem("cookies_ok", "1")
-          setShow(false)
-        }}
+        onClick={() => setVisible(false)}
+        style={{ marginLeft: 20 }}
       >
         Aceptar
       </button>
     </div>
-  )
+  );
 }
