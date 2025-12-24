@@ -1,32 +1,35 @@
-"use client";
+import React, { useState } from "react";
 
-import { useState } from "react";
-
-export default function AdminLogin({
-  onLogin,
-}: {
+interface AdminLoginProps {
   onLogin: () => void;
-}) {
+}
+
+const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin }) => {
   const [password, setPassword] = useState("");
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (password === "admin123") {
+      onLogin();
+    } else {
+      alert("Contraseña incorrecta");
+    }
+  };
+
   return (
-    <div>
-      <h2>Acceso administrador</h2>
-
-      <input
-        type="password"
-        placeholder="Contraseña"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-
-      <button
-        onClick={() => {
-          if (password === "admin123") onLogin();
-        }}
-      >
-        Entrar
-      </button>
+    <div className="admin-login-container">
+      <h2>Iniciar Sesión Administrador</h2>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="password"
+          placeholder="Contraseña"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit">Entrar</button>
+      </form>
     </div>
   );
-}
+};
+
+export default AdminLogin;
