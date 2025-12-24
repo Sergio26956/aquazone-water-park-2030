@@ -1,11 +1,8 @@
 import "./globals.css";
-import WhatsAppFloatingButton from "@/components/WhatsAppFloatingButton";
-import AdvancedNavigation from "@/components/AdvancedNavigation";
-import CookieConsent from "@/components/CookieConsent";
 
 export const metadata = {
   title: "AQUAZONE Water Park",
-  description: "Parques acuáticos premium 2030"
+  description: "Parques acuáticos modulares y urbanos",
 };
 
 export default function RootLayout({
@@ -15,12 +12,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body>
-        <AdvancedNavigation />
-        {children}
-        <WhatsAppFloatingButton />
-        <CookieConsent />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
