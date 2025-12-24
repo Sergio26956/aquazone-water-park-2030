@@ -2,19 +2,31 @@
 
 import { useState } from "react";
 
-export default function AdminLogin({ onLogin }: { onLogin: () => void }) {
-  const [pass, setPass] = useState("");
+export default function AdminLogin({
+  onLogin,
+}: {
+  onLogin: () => void;
+}) {
+  const [password, setPassword] = useState("");
 
   return (
-    <div style={{ textAlign: "center" }}>
-      <h2>Acceso Administrador</h2>
+    <div>
+      <h2>Acceso administrador</h2>
+
       <input
         type="password"
         placeholder="Contraseña"
-        value={pass}
-        onChange={(e) => setPass(e.target.value)}
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
       />
-      <button onClick={onLogin}>Entrar</button>
+
+      <button
+        onClick={() => {
+          if (password === "admin123") onLogin();
+        }}
+      >
+        Entrar
+      </button>
     </div>
   );
 }
