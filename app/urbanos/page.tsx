@@ -1,11 +1,11 @@
-"use client";
-
-import SectionTransition from "../../components/SectionTransition";
+import SectionTransition from "@/components/SectionTransition";
 
 export default function UrbanosPage() {
   return (
-    <SectionTransition>
-      <h2>Parques Acuáticos Urbanos</h2>
-    </SectionTransition>
+    <main>
+      <SectionTransition title="Parques Urbanos">
+        <p>Instalaciones móviles para ciudades y eventos.</p>
+      </SectionTransition>
+    </main>
   );
 }
