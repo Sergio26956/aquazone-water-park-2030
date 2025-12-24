@@ -1,15 +1,10 @@
-"use client";
-
 import ContactForm from "@/components/ContactForm";
-import BudgetForm from "@/components/BudgetForm";
-import SectionTransition from "@/components/SectionTransition";
 
 export default function ContactoPage() {
   return (
     <main>
-      <SectionTransition />
+      <h2>Contacto</h2>
       <ContactForm />
-      <BudgetForm />
     </main>
   );
 }
