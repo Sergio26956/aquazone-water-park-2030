@@ -1,13 +1,14 @@
-"use client";
-
-import WhatsAppFloatingButton from "../components/WhatsAppFloatingButton";
-import SectionTransition from "../components/SectionTransition";
+import SectionTransition from "@/components/SectionTransition";
+import FuturisticGallery from "@/components/FuturisticGallery";
 
 export default function HomePage() {
   return (
-    <SectionTransition>
-      <h1>AQUAZONE Water Park</h1>
-      <WhatsAppFloatingButton />
-    </SectionTransition>
+    <main>
+      <SectionTransition title="AQUAZONE Water Park">
+        <p>Parques acuáticos móviles, flotantes y urbanos de nueva generación.</p>
+      </SectionTransition>
+
+      <FuturisticGallery />
+    </main>
   );
 }
