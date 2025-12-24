@@ -1,30 +1,21 @@
-"use client";
-
 export default function WhatsAppFloatingButton() {
   return (
     <a
-      href="https://wa.me/34649002658"
+      href="https://wa.me/34600000000"
       target="_blank"
-      rel="noopener noreferrer"
       style={{
         position: "fixed",
-        bottom: "20px",
-        right: "20px",
-        backgroundColor: "#25D366",
+        bottom: 20,
+        right: 20,
+        background: "#25D366",
         color: "#fff",
-        width: "60px",
-        height: "60px",
-        borderRadius: "50%",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        fontSize: "30px",
-        boxShadow: "0 0 20px rgba(37,211,102,0.8)",
-        zIndex: 9999,
-        textDecoration: "none"
+        padding: "14px 18px",
+        borderRadius: "50px",
+        fontWeight: "bold",
+        zIndex: 999
       }}
     >
-      🟢
+      WhatsApp
     </a>
   );
 }
