@@ -3,22 +3,24 @@
 import { useState } from "react";
 
 export default function ContactForm() {
-  const [loading, setLoading] = useState(false);
+  const [sent, setSent] = useState(false);
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setLoading(true);
-    await fetch("/api/contacto", { method: "POST" });
-    setLoading(false);
-    alert("Mensaje enviado");
-  }
+  if (sent) return <p>Mensaje enviado correctamente.</p>;
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "15px" }}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        setSent(true);
+      }}
+    >
       <input placeholder="Nombre" required />
-      <input placeholder="Email" type="email" required />
+      <br />
+      <input placeholder="Email" required />
+      <br />
       <textarea placeholder="Mensaje" required />
-      <button type="submit">{loading ? "Enviando..." : "Enviar"}</button>
+      <br />
+      <button type="submit">Enviar</button>
     </form>
   );
 }
